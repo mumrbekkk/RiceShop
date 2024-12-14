@@ -1,0 +1,36 @@
+<header id="header">
+    <div class="inner">
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <span class="symbol"><img src="static/images/logo.svg" alt="" /></span>
+            <span class="title">Baraka Don Optom Guruch</span>
+        </a>
+
+        <!-- Nav -->
+        <nav>
+            <ul>
+                <li><a href="#menu">Menu</a></li>
+            </ul>
+        </nav>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="{{ url_for('main') }}">Bosh Sahifa</a></li>
+                <li><a href="{{ url_for('order') }}">Buyurtma Berish</a></li>
+                <li><a href="{{ url_for('my_orders') }}">Buyurtmalarim</a></li>
+                <li><a href="{{ url_for('register') }}">Ro'yhatdan O'tish</a></li>
+
+                {% if not current_user.is_authenticated: %}
+                <li><a href="{{ url_for('login') }}">Akkauntga Kirish</a></li>
+                {% endif %}
+
+                {% if current_user.is_authenticated: %}
+                <li><a href="{{ url_for('logout') }}">Akkauntdan Chiqish</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+    </div>
+</header>

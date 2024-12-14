@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="static/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+</head>
+<body class="is-preload">
+    <!-- Wrapper -->
+        <div id="wrapper">
+            <!-- Header -->
+            {% include 'header.html' %}
+
+
+            <!-- Main -->
+            <div class="main">
+                <div class="inner">
+                    <h1>Akkauntga Kirish</h1>
+                    <form method="POST" action="{{ url_for('login') }}">
+                        {{ form.hidden_tag() }}
+                        <!-- Display Flashed messages -->
+                        {% with messages = get_flashed_messages(with_categories=True) %}
+                          {% if messages %}
+                            {% for category, message in messages %}
+                                {% if category == "email_error" or category == "password_error" %}
+                                    <p class="flash" style="color: red"> <b>{{ message }}</b></p>
+                                {% endif %}
+                            {% endfor %}
+                          {% endif %}
+                        {% endwith %}
+
+                        <div class="form-group">
+                            {{ form.email.label(class="form-label") }}
+                            {{ form.email(class="form-control") }}
+                        </div>
+                        <div class="form-group" style="padding-bottom: 10px">
+                            {{ form.password.label(class="form-label") }}
+                            {{ form.password(class="form-control") }}
+                        </div>
+                        <button type="submit" name="action" value="login" class="btn btn-primary">
+                            {{ form.submit.label }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            {% include 'footer.html' %}
+
+        </div>
+
+    <!-- Scripts -->
+        <script src="static/assets/js/jquery.min.js"></script>
+        <script src="static/assets/js/browser.min.js"></script>
+        <script src="static/assets/js/breakpoints.min.js"></script>
+        <script src="static/assets/js/util.js"></script>
+        <script src="static/assets/js/main.js"></script>
+
+</body>
+</html>

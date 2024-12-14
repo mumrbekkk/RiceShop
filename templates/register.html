@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Ro'yhatdan o'tish</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+				{% include 'header.html' %}
+
+				<!-- Main -->
+				<div class="main">
+					<div class="inner">
+						<h1>Ro'yxatdan O'tish</h1>
+						<form method="POST" action="{{ url_for('register') }}">
+							{{ form.hidden_tag() }}
+							<div class="form-group">
+								{{ form.name.label(class="form-label") }}
+								{{ form.name(class="form-control") }}
+							</div>
+							<div class="form-group">
+								{{ form.email.label(class="form-label") }}
+								{{ form.email(class="form-control") }}
+							</div>
+							<div class="form-group" style="padding-bottom: 10px">
+								{{ form.password.label(class="form-label") }}
+								{{ form.password(class="form-control") }}
+							</div>
+							<button type="submit" name="action" value="register" class="btn btn-primary">{{ form.submit.label }}</button>
+						</form>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				{% include 'footer.html' %}
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

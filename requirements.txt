@@ -1,0 +1,7 @@
+Flask~=2.3.2
+SQLAlchemy~=2.0.25
+Flask-Login~=0.6.3
+Werkzeug~=3.0.0
+WTForms~=3.0.1
+attrs~=24.2.0
+python-dotenv~=1.0.0

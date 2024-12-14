@@ -1,0 +1,51 @@
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>Izoh va Qayta Aloqa</h2>
+            <p style="color: #04af04">
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                    {% if messages: %}
+                        {% for category, message in messages: %}
+                            {% if category == "success" %}
+                                {{ message }}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </p>
+            <form method="post" action="{{ url_for(page_name) }}">
+                <div class="fields">
+                    <div class="field half">
+                        <input type="text" name="name" id="name" placeholder="Ism" />
+                    </div>
+                    <div class="field half">
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Telefon Raqam" />
+                    </div>
+                    <div class="field">
+                        <textarea name="feedback" id="feedback" placeholder="Izoh"></textarea>
+                    </div>
+                    <div class="field">
+                        <button type="submit" name="action" value="send-feedback" class="btn btn-primary">Yuborish</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <section>
+            <h2>Aloqa</h2>
+            <ul class="icons">
+<!--									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>-->
+<!--									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>-->
+<!--									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>-->
+<!--									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>-->
+<!--									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>-->
+<!--									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>-->
+                <li><a href="tel:+998500797900" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+                <li><a href="mailto:madatovumrbek8@gmail.com?subject=Inquiry&body=Please%20let%20me%20know%20more%20about%20your%20services." class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </section>
+        <ul class="copyright">
+            <li>&copy; Baraka Don Optom Guruch.</li>
+<!--								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>-->
+        </ul>
+    </div>
+</footer>

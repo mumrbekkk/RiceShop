@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Buyurtma Berish</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="static/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+		<style>
+			.inner form label {
+				font-size: xx-large;
+			}
+			.inner form input {
+				font-size: x-large;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Header -->
+				{% include 'header.html' %}
+
+				<!-- Main -->
+				<div id="main">
+					<div class="inner">
+						<!--	Error message	-->
+						<p style="color: #cc2828">
+							{% with messages = get_flashed_messages(with_categories=True) %}
+								{% if messages: %}
+									{% for category, message in messages: %}
+										{% if category == 'error' %}
+											<b>{{ message }}</b>
+										{% endif %}
+									{% endfor %}
+								{% endif %}
+							{% endwith %}
+
+						</p>
+
+						<!--	Forms	-->
+						<form method="post" class="order-form">
+							<div>
+								<label for="lazer">Lazer (kg):</label>
+								<input type="number" id="lazer" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="lazer">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="alanga">Alanga (kg):</label>
+								<input type="number" id="alanga" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="alanga">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="avangard">Avangard (kg):</label>
+								<input type="number" id="avangard" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="avangard">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="nukus">Nukus (kg):</label>
+								<input type="number" id="nukus" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="nukus">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="grechka">Grechka (kg):</label>
+								<input type="number" id="grechka" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="grechka">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="garox">Garox (kg):</label>
+								<input type="number" id="garox" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="garox">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="mosh">Mosh (kg):</label>
+								<input type="number" id="mosh" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="mosh">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="noxat-eron">Noxat Eron (kg):</label>
+								<input type="number" id="noxat-eron" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="noxat-eron">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+						<form method="post" class="order-form">
+							<div>
+								<label for="noxat-gibrit">Noxat Gibrit (kg):</label>
+								<input type="number" id="noxat-gibrit" name="quantity" min="0" max="1000" value="0" step="5">
+								<button name="action" value="noxat-gibrit">Qo'shish</button>
+								<hr>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				{% include 'footer.html' %}
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/assets/js/jquery.min.js"></script>
+			<script src="static/assets/js/browser.min.js"></script>
+			<script src="static/assets/js/breakpoints.min.js"></script>
+			<script src="static/assets/js/util.js"></script>
+			<script src="static/assets/js/main.js"></script>
+
+	</body>
+</html>

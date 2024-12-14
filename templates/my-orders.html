@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="static/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+    <title>Products List</title>
+    <style>
+        .order-list {
+            max-width: 600px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+            list-style-type: none;
+            padding: 0;
+        }
+        .order-list li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-list li:hover {
+            background: #e0f7fa;
+        }
+        .order-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        .order-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <!-- Header -->
+        {% include 'header.html' %}
+
+        <div id="main">
+            <div class="inner">
+                <!-- If user is logged in show them their order list -->
+                {% if user_orders and current_user.is_authenticated: %}
+                    <!-- Orders List -->
+                    <ul class="order-list">
+                        {% for order in user_orders %}
+                        <li>
+                            <span>{{ order.id }} - Buyurtma</span>
+                            <a href="buyurtma-{{ order.id }}">buyurtmani ko'rish</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else: %}
+                    <p style="color: #cd1c1c; font-weight: bold">Buyurmalaringizni ko'rish uchun akkauntga kiring!</p>
+                {% endif %}
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="static/assets/js/jquery.min.js"></script>
+    <script src="static/assets/js/browser.min.js"></script>
+    <script src="static/assets/js/breakpoints.min.js"></script>
+    <script src="static/assets/js/util.js"></script>
+    <script src="static/assets/js/main.js"></script>
+</body>
+</html>

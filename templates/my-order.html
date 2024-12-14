@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="static/assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="static/assets/css/noscript.css" /></noscript>
+    <title>Products List</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        tr:hover {
+            background-color: #e0f7fa;
+        }
+        caption {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        button {
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+        }
+        p {
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            font-weight: bold;
+            color: #0faf0f;
+        }
+    </style>
+</head>
+<body class="is-preload">
+    <div id="wrapper">
+        <!-- Header -->
+        {% include 'header.html' %}
+
+        <div id="main">
+            <div class="inner">
+                <form action="{{ url_for('my_order', order_id=order_id) }}" method="POST">
+                    <table>
+                        <caption>Buyurtmadagi Mahsulotlar Ro'yhati</caption>
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Mahsulot Nomi</th>
+                            <th>O'lchami</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for order in order_details: %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            {% for product in products %}
+                            {% if order.product_id == product.id %}
+                            <td>{{ product.name }}</td>
+                            {% endif %}
+                            {% endfor %}
+                            <td>{{ order.quantity }} kg</td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+
+                    {% if not this_order.order_complete: %}
+                        <button type="submit" name="action" value="complete-order">Rasmiylashtirish</button>
+                    {% else: %}
+                        <p>Buyurtma Rasmiylashtirilgan!</p>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="static/assets/js/jquery.min.js"></script>
+    <script src="static/assets/js/browser.min.js"></script>
+    <script src="static/assets/js/breakpoints.min.js"></script>
+    <script src="static/assets/js/util.js"></script>
+    <script src="static/assets/js/main.js"></script>
+</body>
+</html>
