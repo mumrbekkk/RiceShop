@@ -46,18 +46,20 @@
         <div id="main">
             <div class="inner">
                 <!-- If user is logged in show them their order list -->
-                {% if user_orders and current_user.is_authenticated: %}
+                {% if not current_user.is_authenticated %}
+                    <p style="color: #cd1c1c; font-weight: bold">Buyurmalaringizni ko'rish uchun akkauntga kiring!</p>
+                {% elif user_orders: %}
                     <!-- Orders List -->
                     <ul class="order-list">
                         {% for order in user_orders %}
                         <li>
-                            <span>{{ order.id }} - Buyurtma</span>
+                            <span>{{ loop.index }} - Buyurtma</span>
                             <a href="buyurtma-{{ order.id }}">buyurtmani ko'rish</a>
                         </li>
                         {% endfor %}
                     </ul>
                 {% else: %}
-                    <p style="color: #cd1c1c; font-weight: bold">Buyurmalaringizni ko'rish uchun akkauntga kiring!</p>
+                    <p style="color: #1ccd1f; font-weight: bold">Sizda hali buyurtma yo'q</p>
                 {% endif %}
             </div>
         </div>

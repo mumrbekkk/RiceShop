@@ -62,7 +62,7 @@
                         </thead>
 
                         <tbody>
-                        {% for order in order_details: %}
+                        {% for order in order_details %}
                         <tr>
                             <td>{{loop.index}}</td>
                             {% for product in products %}
@@ -76,7 +76,7 @@
                         </tbody>
                     </table>
 
-                    {% if not this_order.order_complete: %}
+                    {% if not this_order.order_complete %}
                         <button type="submit" name="action" value="complete-order">Rasmiylashtirish</button>
                     {% else: %}
                         <p>Buyurtma Rasmiylashtirilgan!</p>

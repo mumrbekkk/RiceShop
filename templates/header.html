@@ -22,11 +22,11 @@
                 <li><a href="{{ url_for('my_orders') }}">Buyurtmalarim</a></li>
                 <li><a href="{{ url_for('register') }}">Ro'yhatdan O'tish</a></li>
 
-                {% if not current_user.is_authenticated: %}
+                {% if not current_user.is_authenticated %}
                 <li><a href="{{ url_for('login') }}">Akkauntga Kirish</a></li>
                 {% endif %}
 
-                {% if current_user.is_authenticated: %}
+                {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('logout') }}">Akkauntdan Chiqish</a></li>
                 {% endif %}
             </ul>
