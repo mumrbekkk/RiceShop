@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, flash, get_flashed_messages
+from flask import Flask, render_template, redirect, url_for, request, flash
 from flask_login import LoginManager, login_user, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 # import forms
@@ -244,17 +244,23 @@ class RiceWebApp:
 
         return redirect(url_for('order'))
 
+    def get_app(self):
+        return self.app
+
     # ---------- Run Application <method> ---------- #
     def run_app(self, debug=True, port=5050, host='127.0.0.1'):
         self.app.run(debug=debug, port=port, host=host)
 
 
+app_instance = RiceWebApp()
+app = app_instance.get_app()
+
+
 if __name__ == '__main__':
-    app = RiceWebApp()
-    with app.app.app_context():
+    with app_instance.app.app_context():
         db.create_all()
 
-    app.run_app(debug=True)
+    app_instance.run_app(debug=True)
 
 
 
